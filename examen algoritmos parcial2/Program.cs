@@ -11,10 +11,10 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Requisito 9: cargar al iniciar (revisando File.Exists)
+      
         List<Mascota> mascotas = CargarMascotas();
 
-        // Requisito 9: recalcular el contador de Id después de cargar
+   
         int contadorId = CalcularSiguienteId(mascotas);
 
         string opcion;
@@ -50,8 +50,6 @@ class Program
             }
         } while (opcion != "4");
     }
-
-    // Requisitos 2, 3, 4 y 5
     static void AgregarMascota(List<Mascota> mascotas, ref int contadorId)
     {
         Console.Write("Nombre: ");
@@ -86,7 +84,7 @@ class Program
         Console.WriteLine("Mascota agregada: " + nueva);
     }
 
-    // Requisitos 6 y 7
+ 
     static void ListarMascotas(List<Mascota> mascotas)
     {
         if (mascotas.Count == 0)
@@ -104,7 +102,7 @@ class Program
         }
     }
 
-    // Requisito 8
+  
     static void BuscarPorEspecie(List<Mascota> mascotas)
     {
         Console.Write("Texto a buscar en la especie: ");
@@ -128,8 +126,6 @@ class Program
         if (!encontrada)
             Console.WriteLine("No se encontraron mascotas con esa especie.");
     }
-
-    // Requisito 9: guardar
     static void GuardarMascotas(List<Mascota> mascotas)
     {
         List<string> lineas = new List<string>();
@@ -144,7 +140,6 @@ class Program
         File.WriteAllLines(Archivo, lineas);
     }
 
-    // Requisito 9: cargar
     static List<Mascota> CargarMascotas()
     {
         List<Mascota> lista = new List<Mascota>();
@@ -172,8 +167,6 @@ class Program
         Console.WriteLine($"Se cargaron {lista.Count} mascota(s) desde mascotas.csv.");
         return lista;
     }
-
-    // El siguiente Id es el mayor Id cargado + 1, para no repetir
     static int CalcularSiguienteId(List<Mascota> mascotas)
     {
         int maximo = 0;
@@ -184,7 +177,7 @@ class Program
         return maximo + 1;
     }
 
-    // Evita romper el CSV si alguien escribe una coma en el nombre o especie
+ 
     static string QuitarComas(string texto)
     {
         return texto.Replace(",", " ");
